@@ -408,6 +408,7 @@ class GhostMailer {
                     $content = fread ( $handle, $file_size );
                     fclose ( $handle );
 
+
                 }
                 catch ( Exception $e )
                 {
@@ -426,9 +427,13 @@ class GhostMailer {
                 $head .= "--" . $separator . self::EOL;
 
             }
+
+echo"$head";
             
         }
         
+$head = preg_replace("/[\r\n]+/", "\n", $head );
+
         foreach ( self::$recipients as $recipient ) 
         {
         
